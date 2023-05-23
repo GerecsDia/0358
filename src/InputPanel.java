@@ -3,7 +3,7 @@
 * Author: Gerecs Diána
 * Copyright: 2023, Gerecs Diána
 * Group: Szoft-2-E
-* Date: 2023-05-3
+* Date: 2023-05-23
 * Github: https://github.com/GerecsDia/
 * Licenc: GNU GPL
 */
@@ -36,7 +36,7 @@ public class InputPanel extends JPanel{
         this.addComponent();
         this.setupPanel();
     }
-    private void initComponent() {      //itt készítem elő a komponenseket
+    private void initComponent() {    
         this.label = new JLabel();
         this.field = new JTextField();
 
@@ -53,7 +53,7 @@ public class InputPanel extends JPanel{
     }
     
     
-    //beállítók
+    
     public void setLabel(String text) {
         this.label.setText(text);
     }

@@ -1,4 +1,13 @@
-import java.lang.invoke.VolatileCallSite;
+/*
+* File: dolg2.js
+* Author: Gerecs Diána
+* Copyright: 2023, Gerecs Diána
+* Group: Szoft-2-E
+* Date: 2023-05-23
+* Github: https://github.com/GerecsDia/
+* Licenc: GNU GPL
+*/
+
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -6,88 +15,88 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
     InputPanel asidePanel;
     InputPanel bsidePanel;
     InputPanel csidePanel;
     JPanel buttonPanel;
     JButton calcButton;
-    
+    InputPanel volumePanel;
+    double aside;
+    double bside;
+    double cside;
 
     public MainFrame() {
         this.initComponent();
         this.addComponent();
         this.handleEvent();
         this.setFrame();
-
     }
+
     private void initComponent() {
-        this.asidePanel = new InputPanel("a");
-        this.bsidePanel = new InputPanel("b");
-        this.csidePanel = new InputPanel("c");
+        this.asidePanel = new InputPanel("a oldal");
+        this.bsidePanel = new InputPanel("b oldal");
+        this.csidePanel = new InputPanel("c oldal");
         this.buttonPanel = new JPanel();
-        //this.areaPanel = new InputPanel("TERÜLET");
         this.calcButton = new JButton("Számít");
-
-
+        this.volumePanel = new InputPanel("Térfogat");
     }
 
     private void addComponent() {
         this.add(this.asidePanel);
         this.add(this.bsidePanel);
-        this.add(this.csidePanel);        
+        this.add(this.csidePanel);
         this.add(this.buttonPanel);
-        //this.add(this.areaPanel);
         this.buttonPanel.add(this.calcButton);
+        this.add(this.volumePanel);
     }
-    
+
     private void handleEvent() {
         this.calcButton.addActionListener(e -> {
             startCalc();
         });
-
     }
+
     private void startCalc() {
-        String tomegStr = this.tomegPanel.getValue();
-        if(!this.checkInput(tomegStr)) {
-            JOptionPane.showMessageDialog(this, "Csak számjegy");
+        String asideStr = this.asidePanel.getValue();
+        if (!this.checkInput(asideStr)) {
+            JOptionPane.showMessageDialog(this, "Csak szám");
             return;
         }
-        double tomeg = Double.parseDouble(tomegStr);
-        String magassagStr = this.magassagPanel.getValue();
-        if(!this.checkInput(magassagStr)) {
-            JOptionPane.showMessageDialog(this, "Csak számjegy");
+        String bsideStr = this.bsidePanel.getValue();
+        if (!this.checkInput(bsideStr)) {
+            JOptionPane.showMessageDialog(this, "Csak szám");
             return;
         }
-        double magassag = Double.parseDouble(magassagStr);
-        Double testtomegIndex = this.calcBodyIndex(tomeg, magassag);
-        this.indexPanel.setValue(testtomegIndex.toString());
-
-    }
-
-    public double calcBodyIndex(double weight, double height) {
-        return weight / Math.pow(height, 2);
-    }
-
-    public boolean checkInput(String input) {
-        boolean ok = false;
-        if(input.matches("[0-9.]+")) {
-            ok = true;
+        String csideStr = this.csidePanel.getValue();
+        if (!this.checkInput(csideStr)) {
+            JOptionPane.showMessageDialog(this, "Csak szám");
+            return;
         }
-        return ok;
+       
+        aside = Double.parseDouble(asideStr);
+        bside = Double.parseDouble(bsideStr);
+        cside = Double.parseDouble(csideStr);
+
+        double volume = calcVolume(aside, bside, cside);
+
+        volumePanel.setValue("" + volume);
+    }
+
+    private double calcVolume(double aside, double bside, double cside) {
+        return aside * bside * cside;
 
     }
-    
-    private void setFrame() {    
+
+    private boolean checkInput(String input) {
+        return input.matches("[0-9.]+");
+    }
+
+    private void setFrame() {
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.setSize(400, 300);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        
     }
-    
 }

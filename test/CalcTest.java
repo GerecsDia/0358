@@ -12,30 +12,30 @@ public class CalcTest {
     }
 
     @Test
-    public void testCalcBodyIndexFirst() {
-        double actual = this.mainFrame.calcBodyIndex(100, 1.7);
-        double expected = 34.6;
+    public void testCalcVolume1() {
+        double actual = this.mainFrame.calcVolume(10, 20, 10);
+        double expected = 2000;
         assertEquals(expected, actual, 0.1);
     }
 
     @Test
-    public void testCalcBodyIndex() {
-        double actual = this.mainFrame.calcBodyIndex(130, 1.7);
-        double expected = 44.9;
+    public void testCalcVolume2() {
+        double actual = this.mainFrame.calcVolume(1, 5, 5);
+        double expected = 25;
         assertEquals(expected, actual, 0.1);
     }
 
     @Test
-    public void testCalcBodyIndexBottom() {
-        double actual = this.mainFrame.calcBodyIndex(1, 1.7);
+    public void testCalcVolume3() {
+        double actual = this.mainFrame.calcVolume(1, 200, 1);
         double expected = 0.34;
         assertEquals(expected, actual, 0.1);
     }
 
     @Test
-    public void testCalcBodyIndexTop() {
-        double actual = this.mainFrame.calcBodyIndex(600, 2.5);
-        double expected = 96.00;
+    public void testCalcVolume4() {
+        double actual = this.mainFrame.calcVolume(600, 0, 600);
+        double expected = 0;
         assertEquals(expected, actual, 0.1);
     }
 
