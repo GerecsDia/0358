@@ -1,3 +1,16 @@
+/*
+* File: dolg2.js
+* Author: Gerecs Diána
+* Copyright: 2023, Gerecs Diána
+* Group: Szoft-2-E
+* Date: 2023-05-3
+* Github: https://github.com/GerecsDia/
+* Licenc: GNU GPL
+*/
+
+
+
+
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

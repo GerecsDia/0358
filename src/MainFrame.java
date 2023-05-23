@@ -6,10 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
+
 public class MainFrame extends JFrame{
-    InputPanel tomegPanel;
-    InputPanel magassagPanel;
-    InputPanel indexPanel;
+    InputPanel asidePanel;
+    InputPanel bsidePanel;
+    InputPanel csidePanel;
     JPanel buttonPanel;
     JButton calcButton;
     
@@ -22,20 +24,22 @@ public class MainFrame extends JFrame{
 
     }
     private void initComponent() {
-        this.tomegPanel = new InputPanel("Tömeg (kg)");
-        this.magassagPanel = new InputPanel("Magasság (m)");
+        this.asidePanel = new InputPanel("a");
+        this.bsidePanel = new InputPanel("b");
+        this.csidePanel = new InputPanel("c");
         this.buttonPanel = new JPanel();
-        this.indexPanel = new InputPanel("Testtömeg index");
+        //this.areaPanel = new InputPanel("TERÜLET");
         this.calcButton = new JButton("Számít");
 
 
     }
 
     private void addComponent() {
-        this.add(this.tomegPanel);
-        this.add(this.magassagPanel);
+        this.add(this.asidePanel);
+        this.add(this.bsidePanel);
+        this.add(this.csidePanel);        
         this.add(this.buttonPanel);
-        this.add(this.indexPanel);
+        //this.add(this.areaPanel);
         this.buttonPanel.add(this.calcButton);
     }
     
